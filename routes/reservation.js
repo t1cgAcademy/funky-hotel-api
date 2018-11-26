@@ -48,8 +48,9 @@ router.post('/', (req, res) => {
     return res.status(400).json(errors);
   }
 
+  // Find if room exists
   Room.findOne({ number: req.body.roomReserving }).then(room => {
-    if (room) {
+    if (!room) {
       errors.room = 'No room found with that number';
       return res.status(404).json(errors);
     } else {

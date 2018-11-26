@@ -1,0 +1,15 @@
+[{
+  "_id": ObjectId("5bfc7bb9749406f13dc945d9"),
+  "reserver": "John Doe",
+  "checkIn": ISODate("2019-01-02T05:00:00.000Z"),
+  "checkOut": ISODate("2019-01-10T05:00:00.000Z"),
+  "roomReserving": ObjectId("5bfc7a9c4338f3ef0b720681"),
+  "__v": 0
+}, {
+  "_id": ObjectId("5bfc7beb749406f13dc945da"),
+  "reserver": "Bobby Bee",
+  "checkIn": ISODate("2019-02-02T05:00:00.000Z"),
+  "checkOut": ISODate("2019-02-03T05:00:00.000Z"),
+  "roomReserving": ObjectId("5bfc7a014338f3ef0b720680"),
+  "__v": 0
+}]

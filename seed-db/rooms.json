@@ -1,0 +1,40 @@
+[{
+    "_id": ObjectId("5bfc7a014338f3ef0b720680"),
+    "price": 1000,
+    "name": "Penthouse",
+    "number": "999",
+    "bed": "3 Bed",
+    "bathtub": true,
+    "kitchen": true,
+    "__v": 0
+  }, {
+    "_id": ObjectId("5bfc7a9c4338f3ef0b720681"),
+    "price": 50,
+    "name": "Basement",
+    "number": "001",
+    "bed": "1 Bed",
+    "bathtub": false,
+    "kitchen": false,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5bfc7ae24338f3ef0b720682"),
+    "price": 100,
+    "name": "Single",
+    "number": "111",
+    "bed": "1 Bed",
+    "bathtub": true,
+    "kitchen": true,
+    "__v": 0
+  },
+  {
+    "_id": ObjectId("5bfc7aea4338f3ef0b720683"),
+    "price": 100,
+    "name": "Double",
+    "number": "222",
+    "bed": "2 Bed",
+    "bathtub": true,
+    "kitchen": true,
+    "__v": 0
+  }
+]

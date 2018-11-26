@@ -25,10 +25,21 @@ router.get('/', (req, res) => {
     .catch(err => res.status(404).json({ noroomsfound: 'No rooms founds' }));
 });
 
-// @route   GET api/room/:num
+// @route   GET api/room/:id
+// @desc    Get room by id
+// @access  Public
+router.get('/:id', (req, res) => {
+  Room.findById(req.params.id)
+    .then(room => res.json(room))
+    .catch(err =>
+      res.status(404).json({ noroomfound: 'No room found with that ID' })
+    );
+});
+
+// @route   GET api/room/number/:num
 // @desc    Get room by number
 // @access  Public
-router.get('/:num', (req, res) => {
+router.get('/number/:num', (req, res) => {
   Room.findOne({ number: req.params.num })
     .then(room => res.json(room))
     .catch(err =>
@@ -67,11 +78,22 @@ router.post('/', (req, res) => {
   });
 });
 
-// @route   DELETE api/room/:num
+// @route   DELETE api/room/:id
+// @desc    Delete room by id
+// @access  Public
+router.delete('/:id', (req, res) => {
+  Room.findOneAndRemove(req.params.id)
+    .then(() => res.json({ success: true }))
+    .catch(err =>
+      res.status(404).json({ noroomfound: 'No room found with that ID' })
+    );
+});
+
+// @route   DELETE api/room/number/:num
 // @desc    Delete room by number
 // @access  Public
-router.delete('/:num', (req, res) => {
-  Room.findOneAndRemove(req.params.num)
+router.delete('/number/:num', (req, res) => {
+  Room.findOneAndRemove({ number: req.params.num })
     .then(() => res.json({ success: true }))
     .catch(err =>
       res.status(404).json({ noroomfound: 'No room found with that number' })
