@@ -1,12 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const room = require('./routes/room.js');
+const reservation = require('./routes/reservation.js');
+const mongo = require('./mongo/mongo.js');
 
 const app = express();
 
 app.use(cors());
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use('/api/room', room);
+app.use('/api/reservation', reservation);
 
 const port = process.env.PORT || 7001;
 

@@ -1,1 +1,3 @@
 # funky-hotel-api
+
+## Documentation
