@@ -19,12 +19,16 @@
   },
   "homepage": "https://github.com/t1cgAcademy/funky-hotel-api#readme",
   "dependencies": {
+    "apollo-server-express": "^2.2.3",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3",
+    "merge-graphql-schemas": "^1.5.8",
     "mongoose": "^5.3.13",
     "validator": "^10.9.0"
   },
