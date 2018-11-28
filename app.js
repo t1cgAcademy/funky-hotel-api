@@ -12,8 +12,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/api/room', room);
-app.use('/api/reservation', reservation);
+app.use('/api/rest/room', room);
+app.use('/api/rest/reservation', reservation);
 
 const port = process.env.PORT || 7001;
 
