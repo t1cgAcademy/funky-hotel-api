@@ -2,6 +2,12 @@
 
 ## Getting Started (TODO)
 
+* Install and setup mongo, node, and git
+* Clone repo
+* seed DB
+* npm install
+* npm run server
+
 ## GraphQL
 
 GraphQL is a query language for requesting resources from back end APIs. You can think of it as an alternative to the RESTful routes available on this project. This project uses Apollo Server for its GraphQL implementation. To get started, checkout the main GraphQL and Apollo Server resources:
