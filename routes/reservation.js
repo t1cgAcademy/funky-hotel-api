@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
       });
       newReservation
         .save()
-        .then(reservation => res.json(reservation))
+        .then(reservation => res.json({reservation, msg: 'Success'}))
         .catch(err => res.status(404).json(err));
     }
   });
