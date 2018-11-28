@@ -19,20 +19,20 @@ module.exports = validateRoomInput = data => {
     errors.name = 'Name field is required';
   }
 
+  if (!Validator.isLength(data.name, { min: 2, max: 50 })) {
+    errors.name = 'Name must between 2 and 50 characters';
+  }
+
   if (Validator.isEmpty(data.number)) {
     errors.number = 'Number field is required';
   }
 
+  if (!Validator.isLength(data.number, { min: 1, max: 4 })) {
+    errors.number = 'Number must between 1 and 4 characters';
+  }
+
   if (Validator.isEmpty(data.bed)) {
     errors.bed = 'Bed field is required';
-  }
-
-  if (Validator.isEmpty(data.bathtub)) {
-    errors.bathtub = 'Bathtub field is required';
-  }
-
-  if (Validator.isEmpty(data.kitchen)) {
-    errors.kitchen = 'Kitchen field is required';
   }
 
   return {

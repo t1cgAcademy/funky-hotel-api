@@ -22,7 +22,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Test works' }));
 router.get('/', (req, res) => {
   Room.find()
     .then(rooms => res.json(rooms))
-    .catch(err => res.status(404).json({ noroomsfound: 'No rooms founds' }));
+    .catch(err => res.status(404).json({ msg: 'No rooms founds' }));
 });
 
 // @route   GET api/room/:id
@@ -31,9 +31,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Room.findById(req.params.id)
     .then(room => res.json(room))
-    .catch(err =>
-      res.status(404).json({ noroomfound: 'No room found with that ID' })
-    );
+    .catch(err => res.status(404).json({ msg: 'No room found with that ID' }));
 });
 
 // @route   GET api/room/number/:num
@@ -43,7 +41,7 @@ router.get('/number/:num', (req, res) => {
   Room.findOne({ number: req.params.num })
     .then(room => res.json(room))
     .catch(err =>
-      res.status(404).json({ noroomfound: 'No room found with that number' })
+      res.status(404).json({ msg: 'No room found with that number' })
     );
 });
 
@@ -59,7 +57,7 @@ router.post('/', (req, res) => {
   // Check if room number already exists
   Room.findOne({ number: req.body.number }).then(room => {
     if (room) {
-      errors.room = 'That room number already exists';
+      errors.msg = 'That room number already exists';
       return res.status(400).json(errors);
     } else {
       const newRoom = new Room({
@@ -72,7 +70,7 @@ router.post('/', (req, res) => {
       });
       newRoom
         .save()
-        .then(room => res.json(room))
+        .then(room => res.json({ room, msg: 'Success' }))
         .catch(err => res.status(404).json(err));
     }
   });
@@ -84,9 +82,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   Room.findOneAndRemove(req.params.id)
     .then(() => res.json({ success: true }))
-    .catch(err =>
-      res.status(404).json({ noroomfound: 'No room found with that ID' })
-    );
+    .catch(err => res.status(404).json({ msg: 'No room found with that ID' }));
 });
 
 // @route   DELETE api/room/number/:num
@@ -96,7 +92,7 @@ router.delete('/number/:num', (req, res) => {
   Room.findOneAndRemove({ number: req.params.num })
     .then(() => res.json({ success: true }))
     .catch(err =>
-      res.status(404).json({ noroomfound: 'No room found with that number' })
+      res.status(404).json({ msg: 'No room found with that number' })
     );
 });
 
