@@ -3,13 +3,19 @@ const mongoErrorWrapper = require('../util/mongoErrorWrapper.js');
 const Reservation = require('../../models/Reserveration.js');
 
 module.exports = {
+  Reservation: {
+    roomReserving: mongoErrorWrapper(parent =>
+      parent.populate('roomReserving').execPopulate().then(doc => doc.roomReserving)
+    )
+  },
+
   Query: {
     reservations: mongoErrorWrapper((_, conditions) =>
-      Reservation.find(conditions).populate('roomReserving')
+      Reservation.find(conditions)
     ),
 
     reservation: mongoErrorWrapper((_, conditions) =>
-      Reservation.findOne(conditions).populate('roomReserving')
+      Reservation.findOne(conditions)
     )
   },
 

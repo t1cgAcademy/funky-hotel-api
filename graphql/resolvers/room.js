@@ -1,6 +1,6 @@
 const Room = require('../../models/Room.js');
-const mongoErrorWrapper = require('../util/mongoErrorWrapper.js');
 const Reservation = require('../../models/Reserveration.js');
+const mongoErrorWrapper = require('../util/mongoErrorWrapper.js');
 
 module.exports = {
   Room: {
