@@ -31,7 +31,12 @@ router.get('/', (req, res) => {
 // @access  Public
 router.get('/:id', (req, res) => {
   Reservation.findById(req.params.id)
-    .then(reservation => res.json(reservation))
+    .then(reservation => {
+      if (!reservation) {
+        res.status(404).json({ msg: 'No reservation found with that ID' });
+      }
+      res.json(reservation);
+    })
     .catch(err =>
       res
         .status(404)
