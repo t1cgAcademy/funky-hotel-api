@@ -21,9 +21,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Test works' }));
 router.get('/', (req, res) => {
   Reservation.find()
     .then(reservations => res.json(reservations))
-    .catch(err =>
-      res.status(404).json({ noreservationsfound: 'No reservations' })
-    );
+    .catch(err => res.status(404).json({ msg: 'No reservations' }));
 });
 
 // @route   GET api/reservation/:id
@@ -38,9 +36,7 @@ router.get('/:id', (req, res) => {
       res.json(reservation);
     })
     .catch(err =>
-      res
-        .status(404)
-        .json({ noreservationfound: 'No reservation found with that ID' })
+      res.status(404).json({ msg: 'No reservation found with that ID' })
     );
 });
 
