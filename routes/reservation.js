@@ -71,10 +71,13 @@ router.post('/', (req, res) => {
 // Delete reservation
 router.delete('/:id', (req, res) => {
   Reservation.findByIdAndDelete(req.params.id)
-    .then(() => res.json({ success: true }))
-    .catch(err =>
-      res.status(404).json({ msg: 'No reservation found with that ID' })
-    );
+    .then(reservation => {
+      if (!reservation) {
+        res.status(404).json({ msg: 'No reservation found with that ID' });
+      }
+      res.json({ success: true });
+    })
+    .catch(err => res.status(404).json({ msg: 'An error occurred' }));
 });
 
 module.exports = router;

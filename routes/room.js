@@ -84,8 +84,13 @@ router.post('/', (req, res) => {
 // @access  Public
 router.delete('/:id', (req, res) => {
   Room.findByIdAndDelete(req.params.id)
-    .then(() => res.json({ success: true }))
-    .catch(err => res.status(404).json({ msg: 'No room found with that ID' }));
+    .then(room => {
+      if (!room) {
+        res.status(404).json({ msg: 'No room found with that ID' });
+      }
+      res.json({ success: true });
+    })
+    .catch(err => res.status(404).json({ msg: 'An error occurred' }));
 });
 
 // @route   DELETE api/room/number/:num
