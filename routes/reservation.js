@@ -62,10 +62,19 @@ router.post('/', (req, res) => {
       });
       newReservation
         .save()
-        .then(reservation => res.json({reservation, msg: 'Success'}))
+        .then(reservation => res.json({ reservation, msg: 'Success' }))
         .catch(err => res.status(404).json(err));
     }
   });
+});
+
+// Delete reservation
+router.delete('/:id', (req, res) => {
+  Reservation.findByIdAndDelete(req.params.id)
+    .then(() => res.json({ success: true }))
+    .catch(err =>
+      res.status(404).json({ msg: 'No reservation found with that ID' })
+    );
 });
 
 module.exports = router;

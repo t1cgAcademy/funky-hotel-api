@@ -39,10 +39,13 @@ router.get('/:id', (req, res) => {
 // @access  Public
 router.get('/number/:num', (req, res) => {
   Room.findOne({ number: req.params.num })
-    .then(room => res.json(room))
-    .catch(err =>
-      res.status(404).json({ msg: 'No room found with that number' })
-    );
+    .then(room => {
+      if (!room) {
+        res.status(404).json({ msg: 'No room found with that number' });
+      }
+      res.json(room);
+    })
+    .catch(err => res.status(404).json({ msg: 'An error occurred' }));
 });
 
 // @route   POST api/room
@@ -80,7 +83,7 @@ router.post('/', (req, res) => {
 // @desc    Delete room by id
 // @access  Public
 router.delete('/:id', (req, res) => {
-  Room.findOneAndRemove(req.params.id)
+  Room.findByIdAndDelete(req.params.id)
     .then(() => res.json({ success: true }))
     .catch(err => res.status(404).json({ msg: 'No room found with that ID' }));
 });
@@ -90,10 +93,13 @@ router.delete('/:id', (req, res) => {
 // @access  Public
 router.delete('/number/:num', (req, res) => {
   Room.findOneAndRemove({ number: req.params.num })
-    .then(() => res.json({ success: true }))
-    .catch(err =>
-      res.status(404).json({ msg: 'No room found with that number' })
-    );
+    .then(room => {
+      if (!room) {
+        res.status(404).json({ msg: 'No room found with that number' });
+      }
+      res.json({ success: true });
+    })
+    .catch(err => res.status(404).json({ msg: 'An error occurred' }));
 });
 
 module.exports = router;
