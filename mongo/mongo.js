@@ -1,3 +1,6 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.connect('mongodb://localhost/hotel');
+module.exports = mongoose.connect(
+  'mongodb://localhost:27017/hotel',
+  { useNewUrlParser: true }
+);

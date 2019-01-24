@@ -79,6 +79,51 @@ router.post('/', (req, res) => {
   });
 });
 
+// @route   PATCH api/room
+// @desc    Update room
+// @access  Public
+router.patch('/', (req, res) => {
+  const { errors, isValid } = validateRoomInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const updateRoom = {};
+  if (req.body.price) updateRoom.price = req.body.price;
+  if (req.body.name) updateRoom.name = req.body.name;
+  if (req.body.number) updateRoom.number = req.body.number;
+  if (req.body.bed) updateRoom.bed = req.body.bed;
+  if (req.body.bathtub) updateRoom.bathtub = req.body.bathtub;
+  if (req.body.kitchen) updateRoom.kitchen = req.body.kitchen;
+
+  Room.findById(req.body.id)
+    .then(room => {
+      // Find if the room exists
+      if (!room) {
+        res.status(404).json({ msg: 'Room not found' });
+        // Check if they're changing the room number
+      } else if (room.number !== req.body.number) {
+        // Check if the room number already exists
+        Room.findOne({ number: req.body.number })
+          .then(room => {
+            if (room) {
+              errors.msg =
+                'Cannot update room number to one that already exists.';
+              res.status(400).json(errors);
+            }
+          })
+          .catch(err => res.json({ err, msg: 'An error occurred' }));
+      }
+      // Update the room
+      Room.findOneAndUpdate(
+        { _id: req.body.id },
+        { $set: updateRoom },
+        { new: true }
+      ).then(room => res.json({ room, msg: 'Success' }));
+    })
+    .catch(err => res.json({ err, msg: 'An error occurred' }));
+});
+
 // @route   DELETE api/room/:id
 // @desc    Delete room by id
 // @access  Public
