@@ -69,14 +69,14 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const { errors, isValid } = validateReservationInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ errors });
   }
 
   // Find if room exists
   Room.findOne({ number: req.body.roomReserving }).then(room => {
     if (!room) {
       errors.room = 'No room found with that number';
-      return res.status(404).json(errors);
+      return res.status(404).json({ errors });
     } else {
       const newReservation = new Reservation({
         reserver: req.body.reserver,
@@ -87,7 +87,7 @@ router.post('/', (req, res) => {
       newReservation
         .save()
         .then(reservation => res.json({ reservation, msg: 'Success' }))
-        .catch(err => res.status(404).json(err));
+        .catch(err => res.status(404).json({ err }));
     }
   });
 });
@@ -98,7 +98,7 @@ router.post('/', (req, res) => {
 router.patch('/', (req, res) => {
   const { errors, isValid } = validateReservationInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ errors });
   }
 
   const updateResv = {};

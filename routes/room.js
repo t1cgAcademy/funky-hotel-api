@@ -54,14 +54,14 @@ router.get('/number/:num', (req, res) => {
 router.post('/', (req, res) => {
   const { errors, isValid } = validateRoomInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ errors });
   }
 
   // Check if room number already exists
   Room.findOne({ number: req.body.number }).then(room => {
     if (room) {
       errors.msg = 'That room number already exists';
-      return res.status(400).json(errors);
+      return res.status(400).json({ errors });
     } else {
       const newRoom = new Room({
         price: req.body.price,
@@ -85,7 +85,7 @@ router.post('/', (req, res) => {
 router.patch('/', (req, res) => {
   const { errors, isValid } = validateRoomInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ errors });
   }
 
   const updateRoom = {};
@@ -109,7 +109,7 @@ router.patch('/', (req, res) => {
             if (room) {
               errors.msg =
                 'Cannot update room number to one that already exists.';
-              res.status(400).json(errors);
+              res.status(400).json({ errors });
             }
           })
           .catch(err => res.json({ err, msg: 'An error occurred' }));
