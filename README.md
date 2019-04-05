@@ -22,13 +22,13 @@ A REST API is an API that uses HTTP requests to GET, PUT, POST, and DELETE data.
 Definition - Test Endpoint
 
 ```
-GET http://54.85.179.245/api/rest/room/test
+GET /api/rest/room/test
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room/test
+curl /api/rest/room/test
 ```
 
 Example Response
@@ -45,13 +45,13 @@ Example Response
 Definition - Get ALL Rooms
 
 ```
-GET http://54.85.179.245/api/rest/room
+GET /api/rest/room
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room
+curl /api/rest/room
 ```
 
 Example Response
@@ -87,13 +87,13 @@ Example Response
 Definition - Get room by id
 
 ```
-GET http://54.85.179.245/api/rest/room/:id
+GET /api/rest/room/:id
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room/5bfc7a014338f3ef0b720680
+curl /api/rest/room/5bfc7a014338f3ef0b720680
 ```
 
 Example Response
@@ -117,13 +117,13 @@ Example Response
 Definition - Get room by number
 
 ```
-GET http://54.85.179.245/api/rest/room/number/:num
+GET /api/rest/room/number/:num
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room/number/001
+curl /api/rest/room/number/001
 ```
 
 Example Response
@@ -147,13 +147,13 @@ Example Response
 Definition - Post room
 
 ```
-POST http://54.85.179.245/api/rest/room
+POST /api/rest/room
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room \
+curl /api/rest/room \
 -d price=500 \
 -d name="Test Room" \
 -d number="410" \
@@ -186,13 +186,13 @@ Example Response
 Definition - Delete room by id
 
 ```
-DELETE http://54.85.179.245/api/rest/room/:id
+DELETE /api/rest/room/:id
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room/5c12ecbf1b2611937558d81d \
+curl /api/rest/room/5c12ecbf1b2611937558d81d \
 -X DELETE
 ```
 
@@ -212,13 +212,13 @@ Example Response
 Definition - Delete room by number
 
 ```
-DELETE http://54.85.179.245/api/rest/room/:num
+DELETE /api/rest/room/:num
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/room/number/410 \
+curl /api/rest/room/number/410 \
 -X DELETE
 ```
 
@@ -238,13 +238,13 @@ Example Response
 Definition - Test Endpoint
 
 ```
-GET http://54.85.179.245/api/rest/reservation/test
+GET /api/rest/reservation/test
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/reservation/test
+curl /api/rest/reservation/test
 ```
 
 Example Response
@@ -261,13 +261,13 @@ Example Response
 Definition - Get ALL Reservations
 
 ```
-GET http://54.85.179.245/api/rest/reservation
+GET /api/rest/reservation
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/reservation
+curl /api/rest/reservation
 ```
 
 Example Response
@@ -299,13 +299,13 @@ Example Response
 Definition - Get reservation by id
 
 ```
-GET http://54.85.179.245/api/rest/reservation/:id
+GET /api/rest/reservation/:id
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/reservation/5bfc7bb9749406f13dc945d9
+curl /api/rest/reservation/5bfc7bb9749406f13dc945d9
 ```
 
 Example Response
@@ -331,13 +331,13 @@ Example Response
 Definition - Post reservation
 
 ```
-POST http://54.85.179.245/api/rest/reservation
+POST /api/rest/reservation
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/reservation \
+curl /api/rest/reservation \
 -d reserver="Walter White" \
 -d checkIn="10/11/2020" \
 -d checkOut="12/05/2020" \
@@ -375,13 +375,13 @@ Example Response
 Definition - Delete reservation by id
 
 ```
-DELETE http://54.85.179.245/api/rest/reservation/:id
+DELETE /api/rest/reservation/:id
 ```
 
 Example Request
 
 ```
-curl http://54.85.179.245/api/rest/reservation/5c12ecbf1b2611937558d81d \
+curl /api/rest/reservation/5c12ecbf1b2611937558d81d \
 -X DELETE
 ```
 
